@@ -14,6 +14,8 @@ const socket = io('https://socketkaraoke-production.up.railway.app/')
 
 const Home = () => {
 
+    if (!user) navigate('/login/' + mesa)
+
     const params = useParams()
     const mesa = params.mesa
     const user = JSON.parse(localStorage.getItem('user'))
