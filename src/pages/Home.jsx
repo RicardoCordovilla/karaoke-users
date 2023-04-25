@@ -3,6 +3,8 @@ import Canciones from '../components/Canciones'
 import Favorites from '../components/Favorites'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { HiOutlineLogout as LogOut } from 'react-icons/hi';
+
 import '../App.css'
 
 import io from 'socket.io-client'
@@ -14,19 +16,26 @@ const Home = () => {
 
     const params = useParams()
     const mesa = params.mesa
-    const user = localStorage.getItem('user')
+    const user = JSON.parse(localStorage.getItem('user'))
+    // console.log(user)
 
     const navigate = useNavigate()
 
     const [activeTab, setActiveTab] = useState(0)
     const [favorites, setFavorites] = useState([])
     const tabHeaders = ['Canciones', 'Favoritas']
-    localStorage.clear()
+    // localStorage.clear()
+
+
+    const handleLogOut = () => {
+        localStorage.clear()
+        window.location.href = 'https://safaerauio.com'
+    }
 
     useEffect(() => {
 
         if (!user) navigate('/login/' + mesa)
-        socket.emit('auth', user)
+        // socket.emit('auth', user)
 
 
         // socket.on('connect', () => {
@@ -50,16 +59,17 @@ const Home = () => {
         // })
 
         socket.on('erased', (inmessage) => {
+            console.log('first')
             console.log('erased', inmessage)
             console.log(user)
-            if(inmessage===user.ci){
+            if (inmessage === user.ci) {
                 localStorage.clear()
                 window.location.href = 'https://safaerauio.com'
             }
         })
 
 
-    }, [])
+    }, [socket])
 
 
 
@@ -80,6 +90,15 @@ const Home = () => {
                         >{tab}</span>
                     ))
                 }
+                <span
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        // backgroundColor:'#bbb',
+                        justifyContent: 'center'
+                    }}
+                    onClick={handleLogOut}
+                ><LogOut fontSize={'2rem'} /></span>
             </div>
             {
                 activeTab === 0 &&

@@ -18,7 +18,8 @@ function App() {
     const [mesas, setMesas] = useState([1, 2, 3, 4])
     const [pedidos, setPedidos] = useState([{ name: '', pedido: '' }])
     const [room, setRoom] = useState('')
-    const [users, setUsers] = useState(JSON.parse(localStorage.getItem('users')) || [{ name: '', ci: '', pedidos: [''] }])
+    // const [users, setUsers] = useState(JSON.parse(localStorage.getItem('users')) || [{ name: '', ci: '', pedidos: [''] }])
+    const [users, setUsers] = useState(JSON.parse(localStorage.getItem('users')) || [])
     // const [users, setUsers] = useState([])
 
     console.log(localStorage.getItem('users'))
@@ -65,7 +66,7 @@ function App() {
         socket.on('add', (user) => {
             console.log(user)
             console.log(users)
-            users.forEach(item => {
+            users.length > 1 && users.forEach(item => {
                 if (item?.ci !== user?.ci) {
                     setUsers([...users, user])
                     localStorage.setItem('users', JSON.stringify([...users, user]))
@@ -75,7 +76,6 @@ function App() {
             if (users.length < 1) {
                 setUsers([...users, user])
                 localStorage.setItem('users', JSON.stringify([...users, user]))
-
             }
         })
 
