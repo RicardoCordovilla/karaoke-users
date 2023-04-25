@@ -21,7 +21,7 @@ const Home = () => {
     const [activeTab, setActiveTab] = useState(0)
     const [favorites, setFavorites] = useState([])
     const tabHeaders = ['Canciones', 'Favoritas']
-    // localStorage.clear()
+    localStorage.clear()
 
     useEffect(() => {
 
