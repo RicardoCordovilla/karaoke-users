@@ -28,8 +28,11 @@ const Home = () => {
 
 
     const handleLogOut = () => {
-        localStorage.clear()
-        window.location.href = 'https://safaerauio.com'
+        if (confirm('Deseas salir?')) {
+            localStorage.clear()
+            window.location.href = 'https://safaerauio.com'
+        }
+        else return
     }
 
     useEffect(() => {
