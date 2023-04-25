@@ -66,12 +66,15 @@ function App() {
         socket.on('add', (user) => {
             console.log(user)
             console.log(users)
-            users.length > 1 && users.forEach(item => {
-                if (item?.ci !== user?.ci) {
-                    setUsers([...users, user])
-                    localStorage.setItem('users', JSON.stringify([...users, user]))
-                }
-            })
+            // users.length > 1 && users.forEach(item => {
+            //     console.log(item, user)
+            //     if (item?.ci !== user?.ci) {
+            //     }
+            // })
+
+            setUsers([...new Set([...users, user])])
+            localStorage.setItem('users', JSON.stringify([...users, user]))
+
 
             if (users.length < 1) {
                 setUsers([...users, user])
@@ -103,7 +106,7 @@ function App() {
             socket.off('add')
         }
 
-    }, [users, displayMessage])
+    }, [users, displayMessage, socket])
 
 
 
