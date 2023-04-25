@@ -66,7 +66,7 @@ function App() {
             console.log(user)
             console.log(users)
             users.forEach(item => {
-                if (item.ci !== user?.ci) {
+                if (item?.ci !== user?.ci) {
                     setUsers([...users, user])
                     localStorage.setItem('users', JSON.stringify([...users, user]))
                 }
