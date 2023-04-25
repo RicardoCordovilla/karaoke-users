@@ -15,7 +15,7 @@ const socket = io('https://socketkaraoke-production.up.railway.app/')
 function App() {
     const [message, setMessage] = useState('')
     const [displayMessage, setDisplayMessage] = useState()
-    const [mesas, setMesas] = useState([1, 2, 3, 4])
+    const [mesas, setMesas] = useState([1, 2, 3, 4, 5, 6])
     const [pedidos, setPedidos] = useState([{ name: '', pedido: '' }])
     const [room, setRoom] = useState('')
     // const [users, setUsers] = useState(JSON.parse(localStorage.getItem('users')) || [{ name: '', ci: '', pedidos: [''] }])
