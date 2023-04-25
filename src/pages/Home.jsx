@@ -51,8 +51,11 @@ const Home = () => {
 
         socket.on('erased', (inmessage) => {
             console.log('erased', inmessage)
-            localStorage.clear()
-            window.location.href = 'https://safaerauio.com'
+            console.log(user)
+            if(inmessage===user.ci){
+                localStorage.clear()
+                window.location.href = 'https://safaerauio.com'
+            }
         })
 
 
