@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Login from './pages/Login'
 import Home from './pages/Home'
+import Monitor from './pages/Monitor'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path='/:mesa' element={<Home />} />
         <Route path='/login/:mesa' element={<Login />} />
+        <Route path='/monitor' element={<Monitor />} />
       </Routes>
     </div>
   )
