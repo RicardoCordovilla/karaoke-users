@@ -50,7 +50,7 @@ function App() {
     const handleErase = (user) => {
         console.log(user)
         socket.emit('erase', user.ci)
-        let arr = users.filter(item => item.ci !== user.ci)
+        let arr = users.filter(item => item?.ci !== user?.ci)
         console.log(arr)
         localStorage.setItem('users', JSON.stringify(arr))
         setUsers(arr)
@@ -83,8 +83,6 @@ function App() {
         socket.on('server-receive-message', (user) => {
             console.log(user)
             setDisplayMessage('mesa: ' + user?.mesa + ' dice: ' + JSON.stringify(user?.pedidos))
-
-
 
             let array = [user, ...users]
             console.log(array)
