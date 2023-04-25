@@ -1,9 +1,8 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import FormRegister from '../components/FormRegister'
-import Canciones from '../components/Canciones'
-import Home from './Home'
 import { useEffect } from 'react'
+import '../App.css'
 
 
 const Login = () => {

@@ -3,6 +3,7 @@ import Canciones from '../components/Canciones'
 import Favorites from '../components/Favorites'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import '../App.css'
 
 import io from 'socket.io-client'
 // const socket = io('http://localhost:3500')
@@ -20,6 +21,7 @@ const Home = () => {
     const [activeTab, setActiveTab] = useState(0)
     const [favorites, setFavorites] = useState([])
     const tabHeaders = ['Canciones', 'Favoritas']
+    // localStorage.clear()
 
     useEffect(() => {
 
