@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import io from 'socket.io-client'
+import { v4 as uuid } from "uuid";
+
 
 
 // const socket = io('http://localhost:3500')
@@ -9,12 +11,15 @@ const socket = io('https://socketkaraoke-production.up.railway.app/')
 
 const FormRegister = ({ mesa }) => {
 
+    const id = uuid()
+    console.log(id)
+
     const navigate = useNavigate()
 
 
     const [message, setMessage] = useState('')
     const [displayMessage, setDisplayMessage] = useState()
-    const [user, setUser] = useState({ name: '', ci: '', mesa: mesa, pedidos: [] })
+    const [user, setUser] = useState({ name: '', ci: id, mesa: mesa, pedidos: [] })
     const [connected, setConnected] = useState(false)
     const [room, setRoom] = useState('')
     const [pedidos, setPedidos] = useState([])
@@ -59,7 +64,8 @@ const FormRegister = ({ mesa }) => {
 
     return (
         <div className="reservas">
-            <h4>{mesa}</h4>
+            {/* <h4>Mesa {mesa}</h4> */}
+            <h4></h4>
 
             <form className='form' onSubmit={handleRegister}>
                 <span>{displayMessage}</span>
@@ -74,7 +80,7 @@ const FormRegister = ({ mesa }) => {
                     />
                     <label htmlFor="name" className='placeholder'>Nombre:</label>
                 </div>
-                <div className="input-container ic1">
+                {/* <div className="input-container ic1">
                     <input id='cedula' type="tel" className='input'
                         placeholder=''
                         required={10}
@@ -82,7 +88,7 @@ const FormRegister = ({ mesa }) => {
                     // defaultValue={info?.cedula}
                     />
                     <label htmlFor="cedula" className='placeholder'>Cédula:</label>
-                </div>
+                </div> */}
                 {/* <div className="input-container ic1">
                     <input id='celular' type="tel" className='input'
                         placeholder=''
